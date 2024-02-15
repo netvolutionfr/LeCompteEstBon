@@ -1,4 +1,4 @@
-import tirage
+import src.tirage
 
 class Node:
     def __init__(self, numbers, objectif, parent=None, operation=None, used_numbers=None, result=0, depth=0):
@@ -115,27 +115,3 @@ class Node:
                         diff = abs(solution.result - self.objectif)
                         best = solution
             return best
-
-jeu = tirage.tirage()
-parent_node = Node(jeu['tirage'], jeu['objectif'])
-
-print(f'Tirage: {jeu['tirage']}')
-print(f'Objectif : {jeu['objectif']}')
-
-parent_node.generate_tree()
-solutions = parent_node.get_list_of_solutions()
-if len(solutions):
-    print(f'Il y a {len(solutions)} solutions')
-
-    ### Find minimal depth solution
-    min = 0
-    for i in range(len(solutions)):
-        if solutions[i].depth < solutions[min].depth:
-            min = i
-    print(solutions[min])
-else:
-    print('Pas de solution')
-    ### Parcourir l'arbre pour trouver la solution la plus proche
-    solution = parent_node.find_best_solution()
-    print(f'La solution la plus proche est {solution.result}')
-    print(solution)
