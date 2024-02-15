@@ -18,8 +18,4 @@ def tirage():
     objectif = random.randint(100, 999)
     return {'tirage' : tirage, 'objectif' : objectif}
 
-if __name__ == '__main__':
-    print(tirage())
-
-
 
